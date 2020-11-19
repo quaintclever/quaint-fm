@@ -1,3 +1,6 @@
+# Quaint ignore
+.idea
+
 # Compiled class file
 *.class
 

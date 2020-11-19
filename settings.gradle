@@ -1,0 +1,5 @@
+rootProject.name = 'quaint-fm'
+include 'common'
+include 'core'
+include 'test'
+
