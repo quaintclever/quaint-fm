@@ -1,0 +1,21 @@
+allprojects{
+
+    // ===================== 仓库地址 =====================
+    repositories {
+        mavenLocal()
+//        maven {
+//            url "http://xxx.xxx.com/nexus/content/groups/public"
+//        }
+    }
+
+//    ext {
+    // ===================== snapshots、release 地址、 =====================
+//        nexus_snapshots_url = "http://xxx.xxx.com/nexus/content/repositories/snapshots"
+//        nexus_releases_url = "http://xxx.xxx.com/nexus/content/repositories/releases"
+//
+    // ===================== 仓库用户名/密码 =====================
+//        nexus_username = 'username'
+//        nexus_password = 'password'
+//    }
+
+}
