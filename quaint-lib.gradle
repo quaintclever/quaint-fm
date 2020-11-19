@@ -1,0 +1,34 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+// 打包方式
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+// 推送
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifactId project.name
+            artifact(sourcesJar){
+                classifier = 'sources'
+            }
+        }
+    }
+    repositories {
+        if (version.endsWith('LOCAL')) {
+            mavenLocal()
+        }else{
+            maven{
+                url = version.endsWith('SNAPSHOT') ? rootProject.ext.nexus_snapshots_url : rootProject.ext.nexus_releases_url
+                credentials {
+                    username rootProject.ext.nexus_username
+                    password rootProject.ext.nexus_password
+                }
+            }
+        }
+    }
+}
