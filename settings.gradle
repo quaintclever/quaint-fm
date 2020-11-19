@@ -2,4 +2,8 @@ rootProject.name = 'quaint-fm'
 include 'common'
 include 'core'
 include 'test'
+include 'timer'
+include 'mq'
+include 'search'
+include 'cache'
 

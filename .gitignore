@@ -1,5 +1,7 @@
 # Quaint ignore
 .idea
+*.iml
+application-private.yml
 
 # Compiled class file
 *.class

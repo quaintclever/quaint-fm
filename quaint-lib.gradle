@@ -13,7 +13,7 @@ publishing {
         maven(MavenPublication) {
             from components.java
             artifactId project.name
-            artifact(sourcesJar){
+            artifact(sourcesJar) {
                 classifier = 'sources'
             }
         }
@@ -21,8 +21,8 @@ publishing {
     repositories {
         if (version.endsWith('LOCAL')) {
             mavenLocal()
-        }else{
-            maven{
+        } else {
+            maven {
                 url = version.endsWith('SNAPSHOT') ? rootProject.ext.nexus_snapshots_url : rootProject.ext.nexus_releases_url
                 credentials {
                     username rootProject.ext.nexus_username

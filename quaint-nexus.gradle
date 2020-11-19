@@ -1,4 +1,4 @@
-allprojects{
+allprojects {
 
     // ===================== 仓库地址 =====================
     repositories {

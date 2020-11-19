@@ -1,0 +1,8 @@
+//apply from: 'https://raw.githubusercontent.com/quaintclever/quaint-fm/main/quaint-lib.gradle'
+apply from: '../quaint-lib.gradle'
+
+dependencies {
+    api "com.xuxueli:xxl-job-core"
+    api "org.springframework.boot:spring-boot-starter"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}

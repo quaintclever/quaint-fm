@@ -1,16 +1,51 @@
 plugins {
-    id 'java'
+    // springboot 插件
+    id "org.springframework.boot" version '2.3.5.RELEASE' apply false
 }
 
+// 项目描述
 group 'com.github.quaintclever'
 version '1.0-SNAPSHOT'
+description 'Think in the time of listening to fm'
 
-sourceCompatibility = 1.8
+// 引入 私服
+//apply from: 'https://raw.githubusercontent.com/quaintclever/quaint-fm/main/quaint-nexus.gradle'
+apply from: 'quaint-nexus.gradle'
 
-repositories {
-    mavenCentral()
-}
+// 子项目 公共配置
+subprojects {
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    group rootProject.group
+    version rootProject.version
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR9"
+            mavenBom "org.springframework.boot:spring-boot-dependencies:2.3.5.RELEASE"
+        }
+        dependencies{
+            // https://mvnrepository.com/artifact/com.xuxueli/xxl-job-core
+            dependency group: 'com.xuxueli', name: 'xxl-job-core', version: '2.2.0'
+            dependency 'mysql:mysql-connector-java:5.1.46'
+        }
+    }
+
+    dependencies {
+        annotationProcessor 'org.projectlombok:lombok:1.18.2'
+        compileOnly 'org.projectlombok:lombok:1.18.2'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+        testCompileOnly 'org.projectlombok:lombok:1.18.2'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+
 }
