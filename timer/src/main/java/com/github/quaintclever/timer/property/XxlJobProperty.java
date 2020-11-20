@@ -16,14 +16,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class XxlJobProperty {
 
     private AdminProperties admin = new AdminProperties();
-
     private String accessToken;
-
     private ExecutorProperties executor = new ExecutorProperties();
 
     @Data
     public class AdminProperties{
+        // 调度中心地址
         private String addresses;
+        // 执行器名称
         private String appname;
     }
 

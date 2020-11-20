@@ -3,13 +3,17 @@ apply from: '../quaint-lib.gradle'
 
 dependencies {
 
-    //spring cloud
-    api "org.springframework.cloud:spring-cloud-starter-consul-discovery"
+    // ===================== spring cloud =====================
+
+    // ======= 注册中心 =======
+    api("com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery")
+    // api "org.springframework.cloud:spring-cloud-starter-consul-discovery"
+    // ======= 断路器 =======
     api "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
 
-    //spring boot
+    // ===================== spring boot =====================
     api "org.springframework.boot:spring-boot-starter"
-    api "org.springframework.boot:spring-boot-starter-actuator"
-    api "org.springframework.boot:spring-boot-starter-data-redis"
+//    api "org.springframework.boot:spring-boot-starter-actuator"
+//    api "org.springframework.boot:spring-boot-starter-data-redis"
 
 }

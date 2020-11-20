@@ -4,7 +4,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+//import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.lang.annotation.*;
 
@@ -22,7 +22,7 @@ import java.lang.annotation.*;
 @Inherited
 @SpringCloudApplication
 @EnableAsync
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @ComponentScan
 public @interface QuaintApplication {
 

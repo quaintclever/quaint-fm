@@ -4,23 +4,29 @@ server:
 spring:
   application:
     name: quaint-fm-test
-  # 数据库
+# ===================== 数据库 =====================
   datasource:
     url: jdbc:mysql://local:3306/quaint_fm?characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
+# ===================== 微服务相关 =====================
   cloud:
-    # 配置中心
-    consul:
-      host: localhost
-      port: 8081
+    # ======= 配置中心 ======
+#    consul:
+#      host: localhost
+#      port: 8081
+#      discovery:
+#        healthCheckPath: /actuator/health
+#        healthCheckInterval: 15s
+#        register: false
+    nacos:
       discovery:
-        healthCheckPath: /actuator/health
-        healthCheckInterval: 15s
-        register: false
+        server-addr: 127.0.0.1:8848
 
-xxl:
-  job:
-    admin:
-      addresses: http://127.0.0.1:8082/xxl-job-admin
+# ===================== 定时任务 =====================
+# ====== xxl job =======
+#xxl:
+#  job:
+#    admin:
+#      addresses: http://127.0.0.1:8082/xxl-job-admin
