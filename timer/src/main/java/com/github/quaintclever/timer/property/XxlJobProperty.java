@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * </p>
  *
  * 文档:
- *  * https://github.com/xuxueli/xxl-job/releases/tag/v2.2.0
+ * https://github.com/xuxueli/xxl-job/releases/tag/v2.2.0
  *
  * @author quaint
  * @since 19 November 2020
