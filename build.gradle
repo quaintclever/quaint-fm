@@ -41,7 +41,6 @@ subprojects {
             mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
         }
         dependencies{
-            // https://mvnrepository.com/artifact/com.xuxueli/xxl-job-core
             dependency group: 'com.xuxueli', name: 'xxl-job-core', version: '2.2.0'
             dependency 'mysql:mysql-connector-java:5.1.46'
         }

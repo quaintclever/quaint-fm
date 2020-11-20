@@ -1,13 +1,13 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
-// 打包方式
+// 打包 方式
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allJava
 }
 
-// 推送
+// 推 送
 publishing {
     publications {
         maven(MavenPublication) {

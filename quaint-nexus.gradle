@@ -3,6 +3,7 @@ allprojects {
     // ===================== 仓库地址 =====================
     repositories {
         mavenLocal()
+        mavenCentral()
 //        maven {
 //            url "http://xxx.xxx.com/nexus/content/groups/public"
 //        }

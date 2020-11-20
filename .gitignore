@@ -3,6 +3,7 @@
 *.iml
 application-private.yml
 
+
 # Compiled class file
 *.class
 
