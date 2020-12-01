@@ -4,12 +4,14 @@ server:
 spring:
   application:
     name: quaint-fm-test
+
 # ===================== 数据库 =====================
   datasource:
-    url: jdbc:mysql://local:3306/quaint_fm?characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/quaint_fm?characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
+
 # ===================== 微服务相关 =====================
   cloud:
     # ======= 配置中心 ======
@@ -23,6 +25,13 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+
+# ===================== 消息相关 =====================
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 # ===================== 定时任务 =====================
 # ====== xxl job =======

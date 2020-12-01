@@ -3,7 +3,8 @@ apply from: '../quaint-lib.gradle'
 
 dependencies {
     api project(":core")
-    api project(":timer")
+//    api project(":timer")
+    api project(":mq")
 
     api 'org.springframework.boot:spring-boot-starter-web'
     compile("com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery")
