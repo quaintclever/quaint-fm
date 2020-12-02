@@ -27,19 +27,19 @@ public class DirectRabbitConfig {
         //   return new Queue("TestDirectQueue",true,true,false);
 
         //一般设置一下队列的持久化就好,其余两个就是默认false
-        return new Queue("TestDirectQueue",true);
+        return new Queue("directQueue",true);
     }
 
     @Bean
     DirectExchange TestDirectExchange() {
         //Direct交换机 起名：TestDirectExchange
-        return new DirectExchange("TestDirectExchange",true,false);
+        return new DirectExchange("directExchange",true,false);
     }
 
     @Bean
     Binding bindingDirect() {
         //绑定  将队列和交换机绑定, 并设置用于匹配键：TestDirectRouting
-        return BindingBuilder.bind(TestDirectQueue()).to(TestDirectExchange()).with("TestDirectRouting");
+        return BindingBuilder.bind(TestDirectQueue()).to(TestDirectExchange()).with("directRouting");
     }
 
     @Bean

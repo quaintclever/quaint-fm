@@ -1,5 +1,6 @@
 package com.github.quaintclever.test.mq.controller;
 
+import com.github.quaintclever.test.mq.dto.MessageDto;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class SendMessageController {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+    @SuppressWarnings("Duplicates")
     @GetMapping("/sendDirectMessage")
     public String sendDirectMessage() {
         String messageId = String.valueOf(UUID.randomUUID());
@@ -35,11 +37,12 @@ public class SendMessageController {
         map.put("messageData",messageData);
         map.put("createTime",createTime);
         //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
-        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
-        return "ok";
+        rabbitTemplate.convertAndSend("directExchange", "directRouting", map);
+        return "direct ok";
     }
 
 
+    @SuppressWarnings("Duplicates")
     @GetMapping("/sendTopicMessage1")
     public String sendTopicMessage1() {
         String messageId = String.valueOf(UUID.randomUUID());
@@ -50,9 +53,10 @@ public class SendMessageController {
         manMap.put("messageData", messageData);
         manMap.put("createTime", createTime);
         rabbitTemplate.convertAndSend("topicExchange", "topic.man", manMap);
-        return "ok";
+        return "topic1 ok";
     }
 
+    @SuppressWarnings("Duplicates")
     @GetMapping("/sendTopicMessage2")
     public String sendTopicMessage2() {
         String messageId = String.valueOf(UUID.randomUUID());
@@ -63,6 +67,44 @@ public class SendMessageController {
         womanMap.put("messageData", messageData);
         womanMap.put("createTime", createTime);
         rabbitTemplate.convertAndSend("topicExchange", "topic.woman", womanMap);
+        return "topic2 ok";
+    }
+
+    @GetMapping("/sendFanoutMessage")
+    public String sendFanoutMessage() {
+        MessageDto messageDto = new MessageDto();
+        messageDto.setMessageId(String.valueOf(UUID.randomUUID()));
+        messageDto.setMessageData("message: fanout hello!");
+        messageDto.setCreateTime(LocalDateTime.now());
+        rabbitTemplate.convertAndSend("fanoutExchange",null, messageDto);
+        return "fanout ok";
+    }
+
+    @SuppressWarnings("Duplicates")
+    @GetMapping("/TestMessageAck")
+    public String TestMessageAck() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: non-existent-exchange test message ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("non-existent-exchange", "TestDirectRouting", map);
+        return "ok";
+    }
+
+    @GetMapping("/TestMessageAck2")
+    @SuppressWarnings("Duplicates")
+    public String TestMessageAck2() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: lonelyDirectExchange test message ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
         return "ok";
     }
 
