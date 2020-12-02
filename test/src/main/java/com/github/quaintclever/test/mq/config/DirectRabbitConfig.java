@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <p>
  * desc: 直连型交换机 测试
+ * 是实现了轮询的方式对消息进行消费，而且不存在重复消费。
  * </p>
  *
  * @author quaint
