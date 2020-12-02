@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
- * desc: 扇型交换机
+ * desc: 广播交换机
  * </p>
  *
  * @author quaint
@@ -21,7 +21,7 @@ public class FanoutRabbitConfig {
     /**
      *  创建三个队列 ：fanout.A   fanout.B  fanout.C
      *  将三个队列都绑定在交换机 fanoutExchange 上
-     *  因为是扇型交换机, 路由键无需配置,配置也不起作用
+     *  因为是广播交换机, 路由键无需配置,配置也不起作用
      */
     @Bean
     public Queue queueA() {
