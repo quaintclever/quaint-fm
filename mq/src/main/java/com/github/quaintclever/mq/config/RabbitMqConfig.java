@@ -6,10 +6,8 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 /**
@@ -41,9 +39,15 @@ public class RabbitMqConfig {
         return new Jackson2JsonMessageConverter(Jackson2ObjectMapperBuilder.json().build());
     }
 
-
+    /**
+     * 如果想要设置不同的回调类，就要设置为prototype的scope。
+     * 并且 setConfirmCallback setReturnCallback 由 子类实现
+     * //    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+     * @param connectionFactory
+     * @param messageConverter
+     * @return
+     */
     @Bean
-    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter){
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
         rabbitTemplate.setConnectionFactory(connectionFactory);
@@ -65,6 +69,7 @@ public class RabbitMqConfig {
         });
         return rabbitTemplate;
     }
+
 
 
 }

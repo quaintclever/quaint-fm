@@ -15,7 +15,7 @@ import java.util.Map;
  * @since 01 December 2020
  */
 @Component
-@RabbitListener(queues = "TestDirectQueue")
+@RabbitListener(queues = "directQueue")
 public class DirectReceiver {
 
     @RabbitHandler
