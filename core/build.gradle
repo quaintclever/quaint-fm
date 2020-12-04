@@ -13,7 +13,7 @@ dependencies {
 
     // ===================== spring boot =====================
     api "org.springframework.boot:spring-boot-starter"
-//    api "org.springframework.boot:spring-boot-starter-actuator"
-//    api "org.springframework.boot:spring-boot-starter-data-redis"
+    api 'org.springframework.boot:spring-boot-starter-web'
+    api "org.springframework.boot:spring-boot-starter-actuator"
 
 }

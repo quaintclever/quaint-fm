@@ -43,6 +43,7 @@ subprojects {
         dependencies{
             dependency group: 'com.xuxueli', name: 'xxl-job-core', version: '2.2.0'
             dependency 'mysql:mysql-connector-java:5.1.46'
+            dependency 'org.apache.commons:commons-pool2:2.5.0'
         }
     }
 

@@ -25,7 +25,20 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-
+        register-enabled: false
+  # ===================== 缓存相关 =====================
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    timeout: 60000ms
+    lettuce:
+      pool:
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: -1
 # ===================== 消息相关 =====================
 #  rabbitmq:
 #    host: localhost
