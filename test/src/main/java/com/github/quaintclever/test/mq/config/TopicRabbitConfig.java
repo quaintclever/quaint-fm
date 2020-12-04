@@ -32,23 +32,17 @@ public class TopicRabbitConfig {
     }
 
     @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("topicExchange");
-    }
-
-    @Bean
-    Binding bindingExchangeMessage() {
+    Binding bindingExchangeMessage(TopicExchange defaultTopicExchange) {
         //将firstQueue和topicExchange绑定,而且绑定的键值为topic.MAN
         //这样只要是消息携带的路由键是topic.MAN,才会分发到该队列
-        return BindingBuilder.bind(firstQueue()).to(exchange()).with(MAN);
+        return BindingBuilder.bind(firstQueue()).to(defaultTopicExchange).with(MAN);
     }
 
     @Bean
-    Binding bindingExchangeMessage2() {
+    Binding bindingExchangeMessage2(TopicExchange defaultTopicExchange) {
         //将secondQueue和topicExchange绑定,而且绑定的键值为用上通配路由键规则topic.#
         // 这样只要是消息携带的路由键是以topic.开头,都会分发到该队列
-        return BindingBuilder.bind(secondQueue()).to(exchange()).with("topic.#");
+        return BindingBuilder.bind(secondQueue()).to(defaultTopicExchange).with("topic.#");
     }
-
 
 }

@@ -4,6 +4,7 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.Binding;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,21 +32,9 @@ public class DirectRabbitConfig {
     }
 
     @Bean
-    DirectExchange TestDirectExchange() {
-        //Direct交换机 起名：TestDirectExchange
-        return new DirectExchange("directExchange",true,false);
-    }
-
-    @Bean
-    Binding bindingDirect() {
+    Binding bindingDirect(@Qualifier("defaultDirectExchange") DirectExchange defaultDirectExchange) {
         //绑定  将队列和交换机绑定, 并设置用于匹配键：TestDirectRouting
-        return BindingBuilder.bind(TestDirectQueue()).to(TestDirectExchange()).with("directRouting");
+        return BindingBuilder.bind(TestDirectQueue()).to(defaultDirectExchange).with("directRouting");
     }
-
-    @Bean
-    DirectExchange lonelyDirectExchange() {
-        return new DirectExchange("lonelyDirectExchange");
-    }
-
 
 }

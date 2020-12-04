@@ -38,23 +38,19 @@ public class FanoutRabbitConfig {
         return new Queue("fanout.C");
     }
 
+
     @Bean
-    FanoutExchange fanoutExchange() {
-        return new FanoutExchange("fanoutExchange");
+    Binding bindingExchangeA(FanoutExchange defaultFanoutExchange) {
+        return BindingBuilder.bind(queueA()).to(defaultFanoutExchange);
     }
 
     @Bean
-    Binding bindingExchangeA() {
-        return BindingBuilder.bind(queueA()).to(fanoutExchange());
+    Binding bindingExchangeB(FanoutExchange defaultFanoutExchange) {
+        return BindingBuilder.bind(queueB()).to(defaultFanoutExchange);
     }
 
     @Bean
-    Binding bindingExchangeB() {
-        return BindingBuilder.bind(queueB()).to(fanoutExchange());
-    }
-
-    @Bean
-    Binding bindingExchangeC() {
-        return BindingBuilder.bind(queueC()).to(fanoutExchange());
+    Binding bindingExchangeC(FanoutExchange defaultFanoutExchange) {
+        return BindingBuilder.bind(queueC()).to(defaultFanoutExchange);
     }
 }

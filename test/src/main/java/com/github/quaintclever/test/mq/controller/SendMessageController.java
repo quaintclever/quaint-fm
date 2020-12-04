@@ -94,19 +94,5 @@ public class SendMessageController {
         return "ok";
     }
 
-    @GetMapping("/TestMessageAck2")
-    @SuppressWarnings("Duplicates")
-    public String TestMessageAck2() {
-        String messageId = String.valueOf(UUID.randomUUID());
-        String messageData = "message: lonelyDirectExchange test message ";
-        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        Map<String, Object> map = new HashMap<>(16);
-        map.put("messageId", messageId);
-        map.put("messageData", messageData);
-        map.put("createTime", createTime);
-        rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
-        return "ok";
-    }
-
 
 }

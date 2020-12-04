@@ -15,13 +15,18 @@ import java.util.Map;
  * @since 02 December 2020
  */
 @Component
-@RabbitListener(queues = "topic.woman")
 public class TopicTotalReceiver {
 
     @RabbitHandler
-    public void process(Map testMessage) {
-        System.out.println("TopicTotalReceiver消费者收到消息  : " + testMessage.toString());
+    @RabbitListener(queues = "topic.man")
+    public void processMan(Map testMessage) {
+        System.out.println("processMan消费者收到消息  : " + testMessage.toString());
     }
 
+    @RabbitHandler
+    @RabbitListener(queues = "topic.woman")
+    public void processWoman(String testMessage) {
+        System.out.println("processWoman消费者收到消息  : " + testMessage);
+    }
 
 }

@@ -33,7 +33,7 @@ public class MessageListenerConfig {
         // RabbitMQ默认是自动确认，这里改为手动确认消息
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         // 设置一个队列
-        container.setQueueNames("directQueue","fanout.A","fanout.B","fanout.C");
+        container.setQueueNames("directQueue","topic.woman","topic.man","fanout.A","fanout.B","fanout.C");
         container.setMessageListener(myAckReceiver);
         return container;
     }
