@@ -27,15 +27,15 @@ spring:
         server-addr: 127.0.0.1:8848
 
 # ===================== 消息相关 =====================
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    # 确认消息已发送到交换机(Exchange)
-    publisher-confirm-type: correlated
-    # 确认消息已发送到队列(Queue)
-    publisher-returns: true
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#    # 确认消息已发送到交换机(Exchange)
+#    publisher-confirm-type: correlated
+#    # 确认消息已发送到队列(Queue)
+#    publisher-returns: true
 
 # ===================== 定时任务 =====================
 # ====== xxl job =======
