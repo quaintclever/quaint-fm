@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>
- * desc:
+ * desc: 消息确认逻辑
  * </p>
  *
  * @author quaint

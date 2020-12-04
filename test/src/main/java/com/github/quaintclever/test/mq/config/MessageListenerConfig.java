@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
- * desc:
+ * desc: 消息监听配置
  * </p>
  *
  * @author quaint
@@ -37,7 +37,5 @@ public class MessageListenerConfig {
         container.setMessageListener(myAckReceiver);
         return container;
     }
-
-
 
 }
