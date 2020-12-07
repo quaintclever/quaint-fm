@@ -3,9 +3,11 @@ apply from: '../quaint-lib.gradle'
 
 dependencies {
     api project(":core")
+    api project(":common")
 //    api project(":timer")
 //    api project(":mq")
-    api project(":cache")
+//    api project(":cache")
+    api project(":search")
     
     runtime "mysql:mysql-connector-java"
 }
