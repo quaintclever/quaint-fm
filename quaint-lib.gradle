@@ -23,7 +23,7 @@ publishing {
             mavenLocal()
         } else {
             maven {
-                url = version.endsWith('SNAPSHOT') ? rootProject.ext.nexus_snapshots_url : rootProject.ext.nexus_releases_url
+                url = version.endsWith('RELEASE') ? rootProject.ext.nexus_releases_url : rootProject.ext.nexus_snapshots_url
                 credentials {
                     username rootProject.ext.nexus_username
                     password rootProject.ext.nexus_password

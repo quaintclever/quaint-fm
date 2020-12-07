@@ -44,6 +44,11 @@ subprojects {
             dependency group: 'com.xuxueli', name: 'xxl-job-core', version: '2.2.0'
             dependency 'mysql:mysql-connector-java:5.1.46'
             dependency 'org.apache.commons:commons-pool2:2.5.0'
+            dependency 'org.apache.commons:commons-lang3:3.9'
+            // swagger2
+            dependency "io.springfox:springfox-swagger2:2.7.0"
+            // swagger2 ui
+            dependency "io.springfox:springfox-swagger-ui:2.7.0"
         }
     }
 
